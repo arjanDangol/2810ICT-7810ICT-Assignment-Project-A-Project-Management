@@ -1,0 +1,148 @@
+commit 22abbd4900a4d1ff1acef53a4564f3acd5dc530d
+Author: Arjan Dangol <arjan.dangol95@gmail.com>
+Date:   Sun Sep 3 21:11:45 2023 +1000
+
+    Add section 4 visual design part with wireframes
+
+commit ea44bf6af70071add8ac8e04c598dd5ba6024d6c
+Author: manjit kaur singh <tanish.dhir@griffithuni.edu.au>
+Date:   Sat Sep 2 22:06:36 2023 +1000
+
+    Made chages to use case 2
+
+commit 22f358bb3e790e5cbf2b5a8c674f967dfc8e15d6
+Author: Arjan Dangol <arjan.dangol95@gmail.com>
+Date:   Sat Sep 2 21:51:34 2023 +1000
+
+    Add an output suggestion for use case
+
+commit ed6330527acff764d2effc5146c6fa2813108489
+Author: jml71 <jamil.deris@griffithuni.edu.au>
+Date:   Sat Sep 2 19:03:36 2023 +1000
+
+    Minor edit in Gantt Chart
+
+commit 17ed20bfd0327c67e309759c6c5806e7514f1bb4
+Author: jml71 <jamil.deris@griffithuni.edu.au>
+Date:   Sat Sep 2 18:53:29 2023 +1000
+
+    Completed section 4.0 of Software Design Doc
+
+commit 9753e042061e90a3ad1e5e5b2deb618cca37f3fe
+Author: Arjan Dangol <arjan.dangol95@gmail.com>
+Date:   Fri Sep 1 18:48:29 2023 +1000
+
+    Add detailed design section
+
+commit b7aa0173d408d31c55ee2dc11a5e808fd00d786c
+Author: Arjan Dangol <arjan.dangol95@gmail.com>
+Date:   Thu Aug 31 23:04:34 2023 +1000
+
+    Add data structure section
+
+commit 2233e80d1c53518460bc130746dc533d390afbba
+Author: Arjan Dangol <arjan.dangol95@gmail.com>
+Date:   Thu Aug 31 21:51:30 2023 +1000
+
+    Add functions of system component
+
+commit 9728519d680d1b2b14325f37ff5d39eded343730
+Author: Arjan Dangol <arjan.dangol95@gmail.com>
+Date:   Thu Aug 31 20:02:09 2023 +1000
+
+    Add Software Design section
+
+commit 43cdee2b3cb29c1194d3ec1b171bdc0bcd6bdb07
+Author: manjit kaur singh <tanish.dhir@griffithuni.edu.au>
+Date:   Wed Aug 30 14:16:22 2023 +1000
+
+    Added work breakdown structure in project plan document.
+
+commit cc9a0ca8b71f176c1d10801a9878c36096ea6a7e
+Author: manjit kaur singh <tanish.dhir@griffithuni.edu.au>
+Date:   Wed Aug 30 14:14:30 2023 +1000
+
+    Added Software requirements and use cases.
+
+commit be348c083d9ef7d6db348917929f3cb6495893f4
+Author: manjit kaur singh <tanish.dhir@griffithuni.edu.au>
+Date:   Wed Aug 30 14:09:17 2023 +1000
+
+    Put up user requirement
+
+commit edc6e7b36c46f6bd08ec69c8f0029a8e61c3f7d6
+Merge: fa3d41d 220c7e3
+Author: manjit kaur singh <tanish.dhir@griffithuni.edu.au>
+Date:   Wed Aug 30 14:04:32 2023 +1000
+
+    Merge branch 'main' of https://github.com/arjanDangol/2810ICT-7810ICT-Assignment-Project-A-Project-Management
+
+commit fa3d41d50f95b70b77041e8f80c26cac88e51fc4
+Author: Tanish Dhir <tanish.dhir@griffithuni.edu.au>
+Date:   Wed Aug 30 13:44:52 2023 +1000
+
+    Updated work breakdown structure
+
+commit 220c7e3c75c819fabe7f519a39911a865659d0ac
+Author: jml71 <140379033+jml71@users.noreply.github.com>
+Date:   Wed Aug 30 13:41:02 2023 +1000
+
+    Add files via upload
+
+commit 925f432d242514a973d100b0f1cf27a27424c660
+Author: jml71 <jamil.deris@griffithuni.edu.au>
+Date:   Wed Aug 30 13:39:32 2023 +1000
+
+    edit project plan
+
+commit ac342548a46b300e9f3e384353bcc2778460cea9
+Merge: 66f6297 f026c36
+Author: Tanish Dhir <tanish.dhir@griffithuni.edu.au>
+Date:   Wed Aug 30 13:29:58 2023 +1000
+
+    Updated work breakdown structure
+
+commit 695479d1274d810a2c571032b009153917ad8887
+Author: jml71 <jamil.deris@griffithuni.edu.au>
+Date:   Wed Aug 30 13:21:35 2023 +1000
+
+    update
+
+commit a88c068748df35d267ac8f7bc48f69aec6d33eba
+Author: jml71 <jamil.deris@griffithuni.edu.au>
+Date:   Wed Aug 30 13:19:00 2023 +1000
+
+    update project design doc, introduction part
+
+commit 59094ca57ad1adcde98e2a366eabd22a1b0d7027
+Author: jml71 <jamil.deris@griffithuni.edu.au>
+Date:   Wed Aug 30 13:16:00 2023 +1000
+
+    Update names, gantt chart, definition part
+
+commit 66f62974e43d6502e6856fd789fad7a33a9ec02b
+Author: Tanish Dhir <tanish.dhir@griffithuni.edu.au>
+Date:   Wed Aug 30 12:57:59 2023 +1000
+
+    Just viewed it
+
+commit f026c36c776bf36f02ad824f1d9a7e4024f5cdd0
+Merge: 169c5bd 5dccf64
+Author: jml71 <140379033+jml71@users.noreply.github.com>
+Date:   Wed Aug 23 13:10:32 2023 +1000
+
+    Merge pull request #1 from arjanDangol/tanish_dev
+    
+    Complete introduction part
+
+commit 5dccf6455c678f4a0cd98c7dcb8a32e8e4e213cf
+Author: Tanish Dhir <tanish.dhir@griffithuni.edu.au>
+Date:   Wed Aug 23 12:51:33 2023 +1000
+
+    Complete introduction part
+
+commit 169c5bd2554fba964e2dce434fef9f1a66007140
+Author: Arjan Dangol <arjan.dangol95@gmail.com>
+Date:   Wed Aug 16 14:51:39 2023 +1000
+
+    Initialisation of project with provided templates for project A
