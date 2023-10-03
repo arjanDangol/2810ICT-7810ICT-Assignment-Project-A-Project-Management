@@ -1,0 +1,656 @@
+# -*- coding: utf-8 -*-
+
+###########################################################################
+## Python code generated with wxFormBuilder (version 3.10.1-0-g8feb16b3)
+## http://www.wxformbuilder.org/
+##
+## PLEASE DO *NOT* EDIT THIS FILE!
+###########################################################################
+
+import wx
+import wx.xrc
+import wx.adv
+
+###########################################################################
+## Class IntroductionFrame
+###########################################################################
+
+class IntroductionFrame ( wx.Frame ):
+
+	def __init__( self, parent ):
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Sydney Airbnb Dataset Analysis Tool", pos = wx.DefaultPosition, size = wx.Size( 588,372 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+
+		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+		self.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
+		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNHIGHLIGHT ) )
+
+		Uppermenu = wx.GridBagSizer( 0, 0 )
+		Uppermenu.SetFlexibleDirection( wx.BOTH )
+		Uppermenu.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+		self.Listingbutton = wx.Button( self, wx.ID_ANY, u"Listings", wx.DefaultPosition, wx.DefaultSize, 0 )
+		Uppermenu.Add( self.Listingbutton, wx.GBPosition( 0, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.Pricebutton = wx.Button( self, wx.ID_ANY, u"Price Chart", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.Pricebutton.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_INACTIVECAPTIONTEXT ) )
+		self.Pricebutton.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_INACTIVEBORDER ) )
+
+		Uppermenu.Add( self.Pricebutton, wx.GBPosition( 0, 1 ), wx.GBSpan( 0, 0 ), wx.ALL, 5 )
+
+		self.Reviewbutton = wx.Button( self, wx.ID_ANY, u"Reviews", wx.DefaultPosition, wx.DefaultSize, 0 )
+		Uppermenu.Add( self.Reviewbutton, wx.GBPosition( 0, 2 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.RoomUsebutton = wx.Button( self, wx.ID_ANY, u"Room Usage", wx.DefaultPosition, wx.DefaultSize, 0 )
+		Uppermenu.Add( self.RoomUsebutton, wx.GBPosition( 0, 3 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		Pagebuttons = wx.GridBagSizer( 0, 0 )
+		Pagebuttons.SetFlexibleDirection( wx.BOTH )
+		Pagebuttons.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_ALL )
+
+		self.Keywordtextbox = wx.TextCtrl( self, wx.ID_ANY, u"hjkkk", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.Keywordtextbox.SetMaxLength( 10 )
+		self.Keywordtextbox.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
+		self.Keywordtextbox.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
+
+		Pagebuttons.Add( self.Keywordtextbox, wx.GBPosition( 0, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		SuburbchoiceChoices = []
+		self.Suburbchoice = wx.Choice( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, SuburbchoiceChoices, 0 )
+		self.Suburbchoice.SetSelection( 0 )
+		Pagebuttons.Add( self.Suburbchoice, wx.GBPosition( 0, 2 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.Searchbutton = wx.Button( self, wx.ID_ANY, u"Search", wx.DefaultPosition, wx.DefaultSize, 0 )
+		Pagebuttons.Add( self.Searchbutton, wx.GBPosition( 5, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.m_datePicker2 = wx.adv.DatePickerCtrl( self, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize, wx.adv.DP_DEFAULT )
+		Pagebuttons.Add( self.m_datePicker2, wx.GBPosition( 2, 1 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.m_staticText1 = wx.StaticText( self, wx.ID_ANY, u"From", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText1.Wrap( -1 )
+
+		self.m_staticText1.SetBackgroundColour( wx.Colour( 240, 240, 240 ) )
+
+		Pagebuttons.Add( self.m_staticText1, wx.GBPosition( 2, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.m_datePicker3 = wx.adv.DatePickerCtrl( self, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize, wx.adv.DP_DEFAULT )
+		Pagebuttons.Add( self.m_datePicker3, wx.GBPosition( 3, 1 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.m_staticText2 = wx.StaticText( self, wx.ID_ANY, u"To", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText2.Wrap( -1 )
+
+		self.m_staticText2.SetBackgroundColour( wx.Colour( 206, 153, 193 ) )
+
+		Pagebuttons.Add( self.m_staticText2, wx.GBPosition( 3, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+
+		Uppermenu.Add( Pagebuttons, wx.GBPosition( 5, 1 ), wx.GBSpan( 1, 3 ), wx.EXPAND, 5 )
+
+
+		self.SetSizer( Uppermenu )
+		self.Layout()
+
+		self.Centre( wx.BOTH )
+
+		# Connect Events
+		self.Listingbutton.Bind( wx.EVT_BUTTON, self.ListingOnButtonClick )
+		self.Pricebutton.Bind( wx.EVT_BUTTON, self.PricebuttonOnButtonClick )
+		self.Reviewbutton.Bind( wx.EVT_BUTTON, self.ReviewbuttonOnButtonClick )
+		self.RoomUsebutton.Bind( wx.EVT_BUTTON, self.RoomUsebuttonOnButtonClick )
+		self.Keywordtextbox.Bind( wx.EVT_TEXT, self.KeywordtextboxOnText )
+		self.Suburbchoice.Bind( wx.EVT_CHOICE, self.SuburbchoiceOnChoice )
+		self.Searchbutton.Bind( wx.EVT_BUTTON, self.SearchbuttonOnButtonClick )
+		self.m_datePicker2.Bind( wx.adv.EVT_DATE_CHANGED, self.FROMDATE2OnDateChanged )
+		self.m_datePicker3.Bind( wx.adv.EVT_DATE_CHANGED, self.TODATEPicker3OnDateChanged )
+
+	def __del__( self ):
+		pass
+
+
+	# Virtual event handlers, override them in your derived class
+	def ListingOnButtonClick( self, event ):
+		event.Skip()
+
+	def PricebuttonOnButtonClick( self, event ):
+		event.Skip()
+
+	def ReviewbuttonOnButtonClick( self, event ):
+		event.Skip()
+
+	def RoomUsebuttonOnButtonClick( self, event ):
+		event.Skip()
+
+	def KeywordtextboxOnText( self, event ):
+		event.Skip()
+
+	def SuburbchoiceOnChoice( self, event ):
+		event.Skip()
+
+	def SearchbuttonOnButtonClick( self, event ):
+		event.Skip()
+
+	def FROMDATE2OnDateChanged( self, event ):
+		event.Skip()
+
+	def TODATEPicker3OnDateChanged( self, event ):
+		event.Skip()
+
+
+
+#Listing table
+# -*- coding: utf-8 -*-
+
+###########################################################################
+## Python code generated with wxFormBuilder (version 3.10.1-0-g8feb16b3)
+## http://www.wxformbuilder.org/
+##
+## PLEASE DO *NOT* EDIT THIS FILE!
+###########################################################################
+
+import wx
+import wx.xrc
+import wx.adv
+
+###########################################################################
+## Class Listing TAble
+###########################################################################
+
+class Listing TAble ( wx.Frame ):
+
+	def __init__( self, parent ):
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Sydney Airbnb Dataset Analysis Tool", pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+
+		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BACKGROUND ) )
+
+		bSizer1 = wx.BoxSizer( wx.VERTICAL )
+
+		self.Upper Menu = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.Upper Menu.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
+
+		wSizer1 = wx.WrapSizer( wx.HORIZONTAL, wx.WRAPSIZER_DEFAULT_FLAGS )
+
+		self.Listing button = wx.Button( self.Upper Menu, wx.ID_ANY, u"Listings", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.Listing button.SetLabelMarkup( u"Listings" )
+		self.Listing button.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_INACTIVECAPTIONTEXT ) )
+
+		wSizer1.Add( self.Listing button, 0, wx.ALL, 5 )
+
+		self.Price Button = wx.Button( self.Upper Menu, wx.ID_ANY, u"Price Chart", wx.DefaultPosition, wx.DefaultSize, 0 )
+		wSizer1.Add( self.Price Button, 0, wx.ALL, 5 )
+
+		self.Review button = wx.Button( self.Upper Menu, wx.ID_ANY, u"Reviews", wx.DefaultPosition, wx.DefaultSize, 0 )
+		wSizer1.Add( self.Review button, 0, wx.ALL, 5 )
+
+		self.Roomusebutton = wx.Button( self.Upper Menu, wx.ID_ANY, u"Room Usage", wx.DefaultPosition, wx.DefaultSize, 0 )
+		wSizer1.Add( self.Roomusebutton, 0, wx.ALL, 5 )
+
+
+		self.Upper Menu.SetSizer( wSizer1 )
+		self.Upper Menu.Layout()
+		wSizer1.Fit( self.Upper Menu )
+		bSizer1.Add( self.Upper Menu, 1, wx.EXPAND |wx.ALL, 5 )
+
+		self.Selectarea = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.Selectarea.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
+
+		gbSizer6 = wx.GridBagSizer( 0, 0 )
+		gbSizer6.SetFlexibleDirection( wx.BOTH )
+		gbSizer6.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+		self.Input box = wx.TextCtrl( self.Selectarea, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		gbSizer6.Add( self.Input box, wx.GBPosition( 0, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		SuburblistChoices = []
+		self.Suburblist = wx.Choice( self.Selectarea, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, SuburblistChoices, 0 )
+		self.Suburblist.SetSelection( 0 )
+		gbSizer6.Add( self.Suburblist, wx.GBPosition( 0, 5 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.Fromdate = wx.StaticText( self.Selectarea, wx.ID_ANY, u"From", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.Fromdate.Wrap( -1 )
+
+		gbSizer6.Add( self.Fromdate, wx.GBPosition( 1, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.m_datePicker3 = wx.adv.DatePickerCtrl( self.Selectarea, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize, wx.adv.DP_DEFAULT )
+		gbSizer6.Add( self.m_datePicker3, wx.GBPosition( 1, 2 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.TOdate = wx.StaticText( self.Selectarea, wx.ID_ANY, u"To", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.TOdate.Wrap( -1 )
+
+		gbSizer6.Add( self.TOdate, wx.GBPosition( 3, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.m_datePicker4 = wx.adv.DatePickerCtrl( self.Selectarea, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize, wx.adv.DP_DEFAULT )
+		gbSizer6.Add( self.m_datePicker4, wx.GBPosition( 3, 2 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.Searchbutton = wx.Button( self.Selectarea, wx.ID_ANY, u"Search", wx.DefaultPosition, wx.DefaultSize, 0 )
+		gbSizer6.Add( self.Searchbutton, wx.GBPosition( 4, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+
+		self.Selectarea.SetSizer( gbSizer6 )
+		self.Selectarea.Layout()
+		gbSizer6.Fit( self.Selectarea )
+		bSizer1.Add( self.Selectarea, 1, wx.EXPAND |wx.ALL, 5 )
+
+		self.Listingtablearea = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.Listingtablearea.SetFont( wx.Font( 16, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Cambria" ) )
+		self.Listingtablearea.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
+
+		gbSizer5 = wx.GridBagSizer( 0, 0 )
+		gbSizer5.SetFlexibleDirection( wx.BOTH )
+		gbSizer5.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+		self.table text = wx.StaticText( self.Listingtablearea, wx.ID_ANY, u"Texttodisplay", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.table text.Wrap( -1 )
+
+		self.table text.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNSHADOW ) )
+
+		gbSizer5.Add( self.table text, wx.GBPosition( 0, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+
+		self.Listingtablearea.SetSizer( gbSizer5 )
+		self.Listingtablearea.Layout()
+		gbSizer5.Fit( self.Listingtablearea )
+		bSizer1.Add( self.Listingtablearea, 1, wx.EXPAND |wx.ALL, 5 )
+
+
+		self.SetSizer( bSizer1 )
+		self.Layout()
+
+		self.Centre( wx.BOTH )
+
+		# Connect Events
+		self.Listing button.Bind( wx.EVT_BUTTON, self.Listing buttonOnButtonClick )
+		self.Price Button.Bind( wx.EVT_BUTTON, self.Price ChartOnButtonClick )
+		self.Review button.Bind( wx.EVT_BUTTON, self.Review buttonOnButtonClick )
+		self.Roomusebutton.Bind( wx.EVT_BUTTON, self.RoomusebuttonOnButtonClick )
+		self.Input box.Bind( wx.EVT_TEXT, self.Input boxOnText )
+		self.Input box.Bind( wx.EVT_TEXT_ENTER, self.Input boxOnTextEnter )
+		self.Input box.Bind( wx.EVT_TEXT_MAXLEN, self.Input boxOnTextMaxLen )
+		self.Input box.Bind( wx.EVT_TEXT_URL, self.Input boxOnTextURL )
+		self.Suburblist.Bind( wx.EVT_CHOICE, self.SuburblistOnChoice )
+		self.m_datePicker3.Bind( wx.adv.EVT_DATE_CHANGED, self.m_datePicker3OnDateChanged )
+		self.m_datePicker4.Bind( wx.adv.EVT_DATE_CHANGED, self.m_datePicker4OnDateChanged )
+		self.Searchbutton.Bind( wx.EVT_BUTTON, self.SearchbuttonOnButtonClick )
+
+	def __del__( self ):
+		pass
+
+
+	# Virtual event handlers, override them in your derived class
+	def Listing buttonOnButtonClick( self, event ):
+		event.Skip()
+
+	def Price ChartOnButtonClick( self, event ):
+		event.Skip()
+
+	def Review buttonOnButtonClick( self, event ):
+		event.Skip()
+
+	def RoomusebuttonOnButtonClick( self, event ):
+		event.Skip()
+
+	def Input boxOnText( self, event ):
+		event.Skip()
+
+	def Input boxOnTextEnter( self, event ):
+		event.Skip()
+
+	def Input boxOnTextMaxLen( self, event ):
+		event.Skip()
+
+	def Input boxOnTextURL( self, event ):
+		event.Skip()
+
+	def SuburblistOnChoice( self, event ):
+		event.Skip()
+
+	def m_datePicker3OnDateChanged( self, event ):
+		event.Skip()
+
+	def m_datePicker4OnDateChanged( self, event ):
+		event.Skip()
+
+	def SearchbuttonOnButtonClick( self, event ):
+		event.Skip()
+
+
+
+
+
+#Review frame code
+
+# -*- coding: utf-8 -*-
+
+###########################################################################
+## Python code generated with wxFormBuilder (version 3.10.1-0-g8feb16b3)
+## http://www.wxformbuilder.org/
+##
+## PLEASE DO *NOT* EDIT THIS FILE!
+###########################################################################
+
+import wx
+import wx.xrc
+import wx.adv
+
+###########################################################################
+## Class Listing TAble
+###########################################################################
+
+class Listing TAble ( wx.Frame ):
+
+	def __init__( self, parent ):
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Sydney Airbnb Dataset Analysis Tool", pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+
+		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BACKGROUND ) )
+
+		bSizer1 = wx.BoxSizer( wx.VERTICAL )
+
+		self.Upper Menu = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.Upper Menu.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
+
+		wSizer1 = wx.WrapSizer( wx.HORIZONTAL, wx.WRAPSIZER_DEFAULT_FLAGS )
+
+		self.Listing button = wx.Button( self.Upper Menu, wx.ID_ANY, u"Listings", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.Listing button.SetLabelMarkup( u"Listings" )
+		self.Listing button.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_INACTIVECAPTIONTEXT ) )
+
+		wSizer1.Add( self.Listing button, 0, wx.ALL, 5 )
+
+		self.Price Button = wx.Button( self.Upper Menu, wx.ID_ANY, u"Price Chart", wx.DefaultPosition, wx.DefaultSize, 0 )
+		wSizer1.Add( self.Price Button, 0, wx.ALL, 5 )
+
+		self.Review button = wx.Button( self.Upper Menu, wx.ID_ANY, u"Reviews", wx.DefaultPosition, wx.DefaultSize, 0 )
+		wSizer1.Add( self.Review button, 0, wx.ALL, 5 )
+
+		self.Roomusebutton = wx.Button( self.Upper Menu, wx.ID_ANY, u"Room Usage", wx.DefaultPosition, wx.DefaultSize, 0 )
+		wSizer1.Add( self.Roomusebutton, 0, wx.ALL, 5 )
+
+
+		self.Upper Menu.SetSizer( wSizer1 )
+		self.Upper Menu.Layout()
+		wSizer1.Fit( self.Upper Menu )
+		bSizer1.Add( self.Upper Menu, 1, wx.EXPAND |wx.ALL, 5 )
+
+		self.Selectarea = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.Selectarea.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
+
+		gbSizer6 = wx.GridBagSizer( 0, 0 )
+		gbSizer6.SetFlexibleDirection( wx.BOTH )
+		gbSizer6.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+		self.Input box = wx.TextCtrl( self.Selectarea, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		gbSizer6.Add( self.Input box, wx.GBPosition( 0, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		SuburblistChoices = []
+		self.Suburblist = wx.Choice( self.Selectarea, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, SuburblistChoices, 0 )
+		self.Suburblist.SetSelection( 0 )
+		gbSizer6.Add( self.Suburblist, wx.GBPosition( 0, 5 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.Fromdate = wx.StaticText( self.Selectarea, wx.ID_ANY, u"From", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.Fromdate.Wrap( -1 )
+
+		gbSizer6.Add( self.Fromdate, wx.GBPosition( 1, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.m_datePicker3 = wx.adv.DatePickerCtrl( self.Selectarea, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize, wx.adv.DP_DEFAULT )
+		gbSizer6.Add( self.m_datePicker3, wx.GBPosition( 1, 2 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.TOdate = wx.StaticText( self.Selectarea, wx.ID_ANY, u"To", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.TOdate.Wrap( -1 )
+
+		gbSizer6.Add( self.TOdate, wx.GBPosition( 3, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.m_datePicker4 = wx.adv.DatePickerCtrl( self.Selectarea, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize, wx.adv.DP_DEFAULT )
+		gbSizer6.Add( self.m_datePicker4, wx.GBPosition( 3, 2 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.Searchbutton = wx.Button( self.Selectarea, wx.ID_ANY, u"Search", wx.DefaultPosition, wx.DefaultSize, 0 )
+		gbSizer6.Add( self.Searchbutton, wx.GBPosition( 4, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+
+		self.Selectarea.SetSizer( gbSizer6 )
+		self.Selectarea.Layout()
+		gbSizer6.Fit( self.Selectarea )
+		bSizer1.Add( self.Selectarea, 1, wx.EXPAND |wx.ALL, 5 )
+
+		self.Listingtablearea = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.Listingtablearea.SetFont( wx.Font( 16, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Cambria" ) )
+		self.Listingtablearea.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
+
+		gbSizer5 = wx.GridBagSizer( 0, 0 )
+		gbSizer5.SetFlexibleDirection( wx.BOTH )
+		gbSizer5.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+		self.table text = wx.StaticText( self.Listingtablearea, wx.ID_ANY, u"Texttodisplay", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.table text.Wrap( -1 )
+
+		self.table text.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNSHADOW ) )
+
+		gbSizer5.Add( self.table text, wx.GBPosition( 0, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+
+		self.Listingtablearea.SetSizer( gbSizer5 )
+		self.Listingtablearea.Layout()
+		gbSizer5.Fit( self.Listingtablearea )
+		bSizer1.Add( self.Listingtablearea, 1, wx.EXPAND |wx.ALL, 5 )
+
+
+		self.SetSizer( bSizer1 )
+		self.Layout()
+
+		self.Centre( wx.BOTH )
+
+		# Connect Events
+		self.Listing button.Bind( wx.EVT_BUTTON, self.Listing buttonOnButtonClick )
+		self.Price Button.Bind( wx.EVT_BUTTON, self.Price ChartOnButtonClick )
+		self.Review button.Bind( wx.EVT_BUTTON, self.Review buttonOnButtonClick )
+		self.Roomusebutton.Bind( wx.EVT_BUTTON, self.RoomusebuttonOnButtonClick )
+		self.Input box.Bind( wx.EVT_TEXT, self.Input boxOnText )
+		self.Input box.Bind( wx.EVT_TEXT_ENTER, self.Input boxOnTextEnter )
+		self.Input box.Bind( wx.EVT_TEXT_MAXLEN, self.Input boxOnTextMaxLen )
+		self.Input box.Bind( wx.EVT_TEXT_URL, self.Input boxOnTextURL )
+		self.Suburblist.Bind( wx.EVT_CHOICE, self.SuburblistOnChoice )
+		self.m_datePicker3.Bind( wx.adv.EVT_DATE_CHANGED, self.m_datePicker3OnDateChanged )
+		self.m_datePicker4.Bind( wx.adv.EVT_DATE_CHANGED, self.m_datePicker4OnDateChanged )
+		self.Searchbutton.Bind( wx.EVT_BUTTON, self.SearchbuttonOnButtonClick )
+
+	def __del__( self ):
+		pass
+
+
+	# Virtual event handlers, override them in your derived class
+	def Listing buttonOnButtonClick( self, event ):
+		event.Skip()
+
+	def Price ChartOnButtonClick( self, event ):
+		event.Skip()
+
+	def Review buttonOnButtonClick( self, event ):
+		event.Skip()
+
+	def RoomusebuttonOnButtonClick( self, event ):
+		event.Skip()
+
+	def Input boxOnText( self, event ):
+		event.Skip()
+
+	def Input boxOnTextEnter( self, event ):
+		event.Skip()
+
+	def Input boxOnTextMaxLen( self, event ):
+		event.Skip()
+
+	def Input boxOnTextURL( self, event ):
+		event.Skip()
+
+	def SuburblistOnChoice( self, event ):
+		event.Skip()
+
+	def m_datePicker3OnDateChanged( self, event ):
+		event.Skip()
+
+	def m_datePicker4OnDateChanged( self, event ):
+		event.Skip()
+
+	def SearchbuttonOnButtonClick( self, event ):
+		event.Skip()
+
+
+
+#Roomusagescreen frame
+# -*- coding: utf-8 -*-
+
+###########################################################################
+## Python code generated with wxFormBuilder (version 3.10.1-0-g8feb16b3)
+## http://www.wxformbuilder.org/
+##
+## PLEASE DO *NOT* EDIT THIS FILE!
+###########################################################################
+
+import wx
+import wx.xrc
+import wx.adv
+
+###########################################################################
+## Class Roomusagescreen
+###########################################################################
+
+class Roomusagescreen ( wx.Frame ):
+
+	def __init__( self, parent ):
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Sydney Airbnb Dataset Analysis Tool", pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+
+		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNHIGHLIGHT ) )
+
+		bSizer5 = wx.BoxSizer( wx.VERTICAL )
+
+		self.Uppermenu = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.Uppermenu.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_INACTIVECAPTION ) )
+
+		gbSizer15 = wx.GridBagSizer( 0, 0 )
+		gbSizer15.SetFlexibleDirection( wx.BOTH )
+		gbSizer15.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+		self.Listingbutton = wx.Button( self.Uppermenu, wx.ID_ANY, u"Listings", wx.DefaultPosition, wx.DefaultSize, 0 )
+		gbSizer15.Add( self.Listingbutton, wx.GBPosition( 0, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.Pricebutton = wx.Button( self.Uppermenu, wx.ID_ANY, u"Price Chart", wx.DefaultPosition, wx.DefaultSize, 0 )
+		gbSizer15.Add( self.Pricebutton, wx.GBPosition( 0, 1 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.Reviewbutton = wx.Button( self.Uppermenu, wx.ID_ANY, u"Reviews", wx.DefaultPosition, wx.DefaultSize, 0 )
+		gbSizer15.Add( self.Reviewbutton, wx.GBPosition( 0, 2 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.Roomusagebutton = wx.Button( self.Uppermenu, wx.ID_ANY, u"Room Usage", wx.DefaultPosition, wx.DefaultSize, 0 )
+		gbSizer15.Add( self.Roomusagebutton, wx.GBPosition( 0, 3 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+
+		self.Uppermenu.SetSizer( gbSizer15 )
+		self.Uppermenu.Layout()
+		gbSizer15.Fit( self.Uppermenu )
+		bSizer5.Add( self.Uppermenu, 1, wx.EXPAND |wx.ALL, 5 )
+
+		self.Selectarea = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.Selectarea.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_INACTIVECAPTION ) )
+
+		gbSizer16 = wx.GridBagSizer( 0, 0 )
+		gbSizer16.SetFlexibleDirection( wx.BOTH )
+		gbSizer16.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+		self.Inputbox = wx.TextCtrl( self.Selectarea, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		gbSizer16.Add( self.Inputbox, wx.GBPosition( 0, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		SuburbChoices = []
+		self.Suburb = wx.Choice( self.Selectarea, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, SuburbChoices, 0 )
+		self.Suburb.SetSelection( 0 )
+		gbSizer16.Add( self.Suburb, wx.GBPosition( 0, 2 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.Fromdate = wx.StaticText( self.Selectarea, wx.ID_ANY, u"From:", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.Fromdate.Wrap( -1 )
+
+		gbSizer16.Add( self.Fromdate, wx.GBPosition( 1, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.FROMdate = wx.adv.DatePickerCtrl( self.Selectarea, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize, wx.adv.DP_DEFAULT )
+		gbSizer16.Add( self.FROMdate, wx.GBPosition( 1, 1 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.ToDate = wx.StaticText( self.Selectarea, wx.ID_ANY, u"To:", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.ToDate.Wrap( -1 )
+
+		gbSizer16.Add( self.ToDate, wx.GBPosition( 3, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.Todate = wx.adv.DatePickerCtrl( self.Selectarea, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize, wx.adv.DP_DEFAULT )
+		gbSizer16.Add( self.Todate, wx.GBPosition( 3, 1 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+
+		self.Selectarea.SetSizer( gbSizer16 )
+		self.Selectarea.Layout()
+		gbSizer16.Fit( self.Selectarea )
+		bSizer5.Add( self.Selectarea, 1, wx.EXPAND |wx.ALL, 5 )
+
+		self.Roomusearea = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.Roomusearea.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_INACTIVECAPTION ) )
+
+		gbSizer17 = wx.GridBagSizer( 0, 0 )
+		gbSizer17.SetFlexibleDirection( wx.BOTH )
+		gbSizer17.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+		self.Roomname = wx.TextCtrl( self.Roomusearea, wx.ID_ANY, u"Room Name", wx.DefaultPosition, wx.DefaultSize, 0 )
+		gbSizer17.Add( self.Roomname, wx.GBPosition( 0, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.Room Usagedescription = wx.TextCtrl( self.Roomusearea, wx.ID_ANY, u"Room Usage", wx.DefaultPosition, wx.DefaultSize, 0 )
+		gbSizer17.Add( self.Room Usagedescription, wx.GBPosition( 1, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+
+		self.Roomusearea.SetSizer( gbSizer17 )
+		self.Roomusearea.Layout()
+		gbSizer17.Fit( self.Roomusearea )
+		bSizer5.Add( self.Roomusearea, 1, wx.EXPAND |wx.ALL, 5 )
+
+
+		self.SetSizer( bSizer5 )
+		self.Layout()
+
+		self.Centre( wx.BOTH )
+
+		# Connect Events
+		self.Listingbutton.Bind( wx.EVT_BUTTON, self.ListingbuttonOnButtonClick )
+		self.Pricebutton.Bind( wx.EVT_BUTTON, self.PricebuttonOnButtonClick )
+		self.Reviewbutton.Bind( wx.EVT_BUTTON, self.ReviewbuttonOnButtonClick )
+		self.Roomusagebutton.Bind( wx.EVT_BUTTON, self.RoomusagebuttonOnButtonClick )
+		self.Inputbox.Bind( wx.EVT_TEXT, self.InputboxOnText )
+		self.Inputbox.Bind( wx.EVT_TEXT_ENTER, self.InputboxOnTextEnter )
+		self.Suburb.Bind( wx.EVT_CHOICE, self.SuburbOnChoice )
+		self.FROMdate.Bind( wx.adv.EVT_DATE_CHANGED, self.FROMdateOnDateChanged )
+		self.Todate.Bind( wx.adv.EVT_DATE_CHANGED, self.TodateOnDateChanged )
+
+	def __del__( self ):
+		pass
+
+
+	# Virtual event handlers, override them in your derived class
+	def ListingbuttonOnButtonClick( self, event ):
+		event.Skip()
+
+	def PricebuttonOnButtonClick( self, event ):
+		event.Skip()
+
+	def ReviewbuttonOnButtonClick( self, event ):
+		event.Skip()
+
+	def RoomusagebuttonOnButtonClick( self, event ):
+		event.Skip()
+
+	def InputboxOnText( self, event ):
+		event.Skip()
+
+	def InputboxOnTextEnter( self, event ):
+		event.Skip()
+
+	def SuburbOnChoice( self, event ):
+		event.Skip()
+
+	def FROMdateOnDateChanged( self, event ):
+		event.Skip()
+
+	def TodateOnDateChanged( self, event ):
+		event.Skip()
+
+
