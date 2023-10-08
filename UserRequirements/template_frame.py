@@ -16,6 +16,9 @@ import wx.grid
 ###########################################################################
 ## Class IntroductionFrame
 ###########################################################################
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg as FigureCanvas
+
 
 class IntroductionFrame(wx.Frame):
 
@@ -583,6 +586,11 @@ class Roomusagescreen(wx.Frame):
         self.Selectarea = wx.Panel(self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL)
         self.Selectarea.SetBackgroundColour(wx.SystemSettings.GetColour(wx.SYS_COLOUR_ACTIVECAPTION))
 
+        self.RoomUsageTableArea = wx.ScrolledWindow(self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
+                                                 wx.HSCROLL | wx.VSCROLL)
+        self.RoomUsageTableArea.SetScrollbars(1, 1, 1, 1)  # Enable scrollbars
+        self.RoomUsageTableArea.SetBackgroundColour(wx.SystemSettings.GetColour(wx.SYS_COLOUR_ACTIVECAPTION))
+
         gbSizer16 = wx.GridBagSizer(0, 0)
         gbSizer16.SetFlexibleDirection(wx.BOTH)
         gbSizer16.SetNonFlexibleGrowMode(wx.FLEX_GROWMODE_SPECIFIED)
@@ -630,31 +638,59 @@ class Roomusagescreen(wx.Frame):
         gbSizer16.Fit(self.Selectarea)
         bSizer5.Add(self.Selectarea, 1, wx.EXPAND | wx.ALL, 5)
 
-        self.Roomusearea = wx.Panel(self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL)
-        self.Roomusearea.SetBackgroundColour(wx.SystemSettings.GetColour(wx.SYS_COLOUR_ACTIVECAPTION))
-
         gbSizer17 = wx.GridBagSizer(0, 0)
         gbSizer17.SetFlexibleDirection(wx.BOTH)
         gbSizer17.SetNonFlexibleGrowMode(wx.FLEX_GROWMODE_SPECIFIED)
 
-        self.RoomName = wx.StaticText(self.Roomusearea, wx.ID_ANY, u"RoomName", wx.DefaultPosition, wx.DefaultSize, 0)
-        self.RoomName.Wrap(-1)
+        self.RoomUsageTable = wx.grid.Grid(self.RoomUsageTableArea, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0)
 
-        self.RoomName.SetBackgroundColour(wx.SystemSettings.GetColour(wx.SYS_COLOUR_SCROLLBAR))
+        # Grid
+        self.RoomUsageTable.CreateGrid(5, 5)
+        self.RoomUsageTable.EnableEditing(True)
+        self.RoomUsageTable.EnableGridLines(True)
+        self.RoomUsageTable.EnableDragGridSize(False)
+        self.RoomUsageTable.SetMargins(0, 0)
 
-        gbSizer17.Add(self.RoomName, wx.GBPosition(0, 0), wx.GBSpan(1, 1), wx.ALL, 5)
+        # Columns
+        self.RoomUsageTable.EnableDragColMove(False)
+        self.RoomUsageTable.EnableDragColSize(True)
+        self.RoomUsageTable.SetColLabelAlignment(wx.ALIGN_CENTER, wx.ALIGN_CENTER)
 
-        self.RoomUsage = wx.StaticText(self.Roomusearea, wx.ID_ANY, u"RoomUsage", wx.DefaultPosition, wx.DefaultSize, 0)
-        self.RoomUsage.Wrap(-1)
+        # Rows
+        self.RoomUsageTable.EnableDragRowSize(True)
+        self.RoomUsageTable.SetRowLabelAlignment(wx.ALIGN_CENTER, wx.ALIGN_CENTER)
 
-        self.RoomUsage.SetBackgroundColour(wx.SystemSettings.GetColour(wx.SYS_COLOUR_SCROLLBAR))
+        # Label Appearance
 
-        gbSizer17.Add(self.RoomUsage, wx.GBPosition(1, 0), wx.GBSpan(1, 1), wx.ALL, 5)
+        # Cell Defaults
+        self.RoomUsageTable.SetDefaultCellAlignment(wx.ALIGN_LEFT, wx.ALIGN_TOP)
+        gbSizer17.Add(self.RoomUsageTable, wx.GBPosition(0, 0), wx.GBSpan(1, 1), wx.ALL, 5)
 
-        self.Roomusearea.SetSizer(gbSizer17)
-        self.Roomusearea.Layout()
-        gbSizer17.Fit(self.Roomusearea)
-        bSizer5.Add(self.Roomusearea, 1, wx.EXPAND | wx.ALL, 5)
+        # self.Roomusearea = wx.Panel(self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL)
+        # self.Roomusearea.SetBackgroundColour(wx.SystemSettings.GetColour(wx.SYS_COLOUR_ACTIVECAPTION))
+        #
+        # gbSizer17 = wx.GridBagSizer(0, 0)
+        # gbSizer17.SetFlexibleDirection(wx.BOTH)
+        # gbSizer17.SetNonFlexibleGrowMode(wx.FLEX_GROWMODE_SPECIFIED)
+        #
+        # self.RoomName = wx.StaticText(self.Roomusearea, wx.ID_ANY, u"RoomName", wx.DefaultPosition, wx.DefaultSize, 0)
+        # self.RoomName.Wrap(-1)
+        #
+        # self.RoomName.SetBackgroundColour(wx.SystemSettings.GetColour(wx.SYS_COLOUR_SCROLLBAR))
+        #
+        # gbSizer17.Add(self.RoomName, wx.GBPosition(0, 0), wx.GBSpan(1, 1), wx.ALL, 5)
+        #
+        # self.RoomUsage = wx.StaticText(self.Roomusearea, wx.ID_ANY, u"RoomUsage", wx.DefaultPosition, wx.DefaultSize, 0)
+        # self.RoomUsage.Wrap(-1)
+        #
+        # self.RoomUsage.SetBackgroundColour(wx.SystemSettings.GetColour(wx.SYS_COLOUR_SCROLLBAR))
+        #
+        # gbSizer17.Add(self.RoomUsage, wx.GBPosition(1, 0), wx.GBSpan(1, 1), wx.ALL, 5)
+
+        self.RoomUsageTableArea.SetSizer(gbSizer17)
+        self.RoomUsageTableArea.Layout()
+        gbSizer17.Fit(self.RoomUsageTableArea)
+        bSizer5.Add(self.RoomUsageTableArea, 1, wx.EXPAND | wx.ALL, 5)
 
         self.SetSizer(bSizer5)
         self.Layout()
@@ -968,41 +1004,57 @@ class PriceFrame(wx.Frame):
         gbSizer19.Fit(self.Selectarea)
         bSizer6.Add(self.Selectarea, 1, wx.EXPAND | wx.ALL, 5)
 
-        self.PriceTable = wx.Panel(self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL)
-        self.PriceTable.SetBackgroundColour(wx.SystemSettings.GetColour(wx.SYS_COLOUR_ACTIVECAPTION))
+        # Create a panel for the canvas
+        self.CanvasPanel = wx.Panel(self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL)
+        self.CanvasPanel.SetBackgroundColour(wx.SystemSettings.GetColour(wx.SYS_COLOUR_ACTIVECAPTION))
 
-        gbSizer20 = wx.GridBagSizer(0, 0)
-        gbSizer20.SetFlexibleDirection(wx.BOTH)
-        gbSizer20.SetNonFlexibleGrowMode(wx.FLEX_GROWMODE_SPECIFIED)
+        # Create a figure and a canvas
+        self.priceChart = Figure(figsize=(5, 6), dpi=100)
+        self.canvas = FigureCanvas(self.CanvasPanel, -1, self.priceChart)
 
-        self.m_grid4 = wx.grid.Grid(self.PriceTable, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0)
+        # Add the canvas to the sizer
+        gbSizer21 = wx.BoxSizer(wx.VERTICAL)
+        gbSizer21.Add(self.canvas, 1, wx.EXPAND | wx.ALL, 5)
+        self.CanvasPanel.SetSizerAndFit(gbSizer21)
 
-        # Grid
-        self.m_grid4.CreateGrid(5, 5)
-        self.m_grid4.EnableEditing(True)
-        self.m_grid4.EnableGridLines(True)
-        self.m_grid4.EnableDragGridSize(False)
-        self.m_grid4.SetMargins(0, 0)
+        # Add the CanvasPanel to the main sizer
+        bSizer6.Add(self.CanvasPanel, 1, wx.EXPAND | wx.ALL, 5)
 
-        # Columns
-        self.m_grid4.EnableDragColMove(False)
-        self.m_grid4.EnableDragColSize(True)
-        self.m_grid4.SetColLabelAlignment(wx.ALIGN_CENTER, wx.ALIGN_CENTER)
+        # self.PriceTable = wx.Panel(self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL)
+        # self.PriceTable.SetBackgroundColour(wx.SystemSettings.GetColour(wx.SYS_COLOUR_ACTIVECAPTION))
 
-        # Rows
-        self.m_grid4.EnableDragRowSize(True)
-        self.m_grid4.SetRowLabelAlignment(wx.ALIGN_CENTER, wx.ALIGN_CENTER)
+        # gbSizer20 = wx.GridBagSizer(0, 0)
+        # gbSizer20.SetFlexibleDirection(wx.BOTH)
+        # gbSizer20.SetNonFlexibleGrowMode(wx.FLEX_GROWMODE_SPECIFIED)
 
-        # Label Appearance
-
-        # Cell Defaults
-        self.m_grid4.SetDefaultCellAlignment(wx.ALIGN_LEFT, wx.ALIGN_TOP)
-        gbSizer20.Add(self.m_grid4, wx.GBPosition(0, 0), wx.GBSpan(1, 1), wx.ALL, 5)
-
-        self.PriceTable.SetSizer(gbSizer20)
-        self.PriceTable.Layout()
-        gbSizer20.Fit(self.PriceTable)
-        bSizer6.Add(self.PriceTable, 1, wx.EXPAND | wx.ALL, 5)
+        # self.m_grid4 = wx.grid.Grid(self.PriceTable, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0)
+        #
+        # # Grid
+        # self.m_grid4.CreateGrid(5, 5)
+        # self.m_grid4.EnableEditing(True)
+        # self.m_grid4.EnableGridLines(True)
+        # self.m_grid4.EnableDragGridSize(False)
+        # self.m_grid4.SetMargins(0, 0)
+        #
+        # # Columns
+        # self.m_grid4.EnableDragColMove(False)
+        # self.m_grid4.EnableDragColSize(True)
+        # self.m_grid4.SetColLabelAlignment(wx.ALIGN_CENTER, wx.ALIGN_CENTER)
+        #
+        # # Rows
+        # self.m_grid4.EnableDragRowSize(True)
+        # self.m_grid4.SetRowLabelAlignment(wx.ALIGN_CENTER, wx.ALIGN_CENTER)
+        #
+        # # Label Appearance
+        #
+        # # Cell Defaults
+        # self.m_grid4.SetDefaultCellAlignment(wx.ALIGN_LEFT, wx.ALIGN_TOP)
+        # gbSizer20.Add(self.m_grid4, wx.GBPosition(0, 0), wx.GBSpan(1, 1), wx.ALL, 5)
+        #
+        # self.PriceTable.SetSizer(gbSizer20)
+        # self.PriceTable.Layout()
+        # gbSizer20.Fit(self.PriceTable)
+        # bSizer6.Add(self.PriceTable, 1, wx.EXPAND | wx.ALL, 5)
 
         self.SetSizer(bSizer6)
         self.Layout()
@@ -1015,6 +1067,7 @@ class PriceFrame(wx.Frame):
         self.Reviewbutton.Bind(wx.EVT_BUTTON, self.ReviewbuttonOnButtonClick)
         self.Roomusagebutton.Bind(wx.EVT_BUTTON, self.RoomusagebuttonOnButtonClick)
         self.UserSpecificbutton.Bind(wx.EVT_BUTTON, self.UserSpecificbuttonOnButtonClick)
+        self.FROMdate.Bind(wx.adv.EVT_DATE_CHANGED, self.FromDateOnDateChanged)
         self.ToDate1.Bind(wx.adv.EVT_DATE_CHANGED, self.ToDateOnDateChanged)
         self.CreateChartButton.Bind(wx.EVT_BUTTON, self.CreateChartButtonOnButtonClick)
 
@@ -1035,6 +1088,9 @@ class PriceFrame(wx.Frame):
         event.Skip()
 
     def UserSpecificbuttonOnButtonClick(self, event):
+        event.Skip()
+
+    def FromDateOnDateChanged(self, event):
         event.Skip()
 
     def ToDateOnDateChanged(self, event):

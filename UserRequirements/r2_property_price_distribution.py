@@ -1,44 +1,39 @@
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
 
-# Load the calendar dataset
-calendar_df = pd.read_csv("./dataset/calendar_dec18.csv")
+import matplotlib
 
-# Prompt the user for input
-start_date = input("Enter the start date (YYYY-MM-DD): ")
-end_date = input("Enter the end date (YYYY-MM-DD): ")
+matplotlib.use('WXAgg')
 
-# Filter the calendar data for the specified date range
-filtered_calendar = calendar_df[(calendar_df['date'] >= start_date) & (calendar_df['date'] <= end_date)]
+from matplotlib.figure import Figure
 
-# Remove rows where the price is NaN or not available
-filtered_calendar = filtered_calendar.dropna(subset=['price'])
 
-# Convert the 'price' column from a string to a numeric value (remove '$' and ',')
-filtered_calendar['price'] = filtered_calendar['price'].str.replace('[\$,]', '', regex=True).astype(float)
+def show_plot(start_date, end_date):
+    # Load the calendar dataset
+    calendar_df = pd.read_csv("./dataset/calendar_dec18.csv")
 
-# Group the data by 'listing_id' and calculate the average price for each listing
-average_price_by_listing = filtered_calendar.groupby('listing_id')['price'].mean()
-average_price_by_listing_df = average_price_by_listing.reset_index()
-print("Average Pricing: ", average_price_by_listing_df)
+    # Filter the calendar data for the specified date range
+    filtered_calendar = calendar_df[(calendar_df['date'] >= start_date) & (calendar_df['date'] <= end_date)]
 
-# Create a scatter plot to show the distribution of average prices by listing
-plt.figure(figsize=(10, 6))
-plt.scatter(average_price_by_listing_df['listing_id'], average_price_by_listing_df['price'], alpha=0.5)
-plt.xlabel('Listing ID')
-plt.ylabel('Price')
-plt.title('Distribution of Prices by Listing ID (Scatter Plot)')
-plt.grid(True)
+    # Remove rows where the price is NaN or not available
+    filtered_calendar = filtered_calendar.dropna(subset=['price'])
 
-# Create a histogram to show the distribution of average prices by listing
-plt.figure(figsize=(10, 6))
-plt.hist(average_price_by_listing_df['price'], bins=30, edgecolor='k', alpha=0.7)
-plt.xlabel('Average Price')
-plt.ylabel('Frequency')
-plt.title('Distribution of Prices by Listing ID (Histogram)')
-plt.grid(True)
+    # Convert the 'price' column from a string to a numeric value (remove '$' and ',')
+    filtered_calendar['price'] = filtered_calendar['price'].str.replace('[\$,]', '', regex=True).astype(float)
 
-# Show the chart
-plt.show()
+    # Group the data by 'listing_id' and calculate the average price for each listing
+    average_price_by_listing = filtered_calendar.groupby('listing_id')['price'].mean()
+    average_price_by_listing_df = average_price_by_listing.reset_index()
+    print("Average Pricing: ", average_price_by_listing_df)
 
+    figure_score = Figure()
+    ax = figure_score.add_subplot(111)
+    ax.hist(average_price_by_listing_df['price'], bins=30, edgecolor='k', alpha=0.7)
+    ax.set_xlabel('Average Price')
+    ax.set_ylabel('Frequency')
+    ax.set_title('Distribution of Prices by Listing ID (Histogram)')
+    ax.grid(True)
+
+    print("Figure Score", figure_score)
+    return figure_score
+
+# show_plot("2018-07-10", "2019-01-10")

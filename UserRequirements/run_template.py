@@ -2,6 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 import wx
+from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg
 
 from template_frame import IntroductionFrame as IntroFrame
 from template_frame import ListingTAble as ListingFrame
@@ -11,8 +12,10 @@ from template_frame import UserSpecificFrame as UserSpecificFrame
 from template_frame import PriceFrame as PriceFrame
 
 from r1_airbnb_lisitng_report import list_airbnb_listing
+from r2_property_price_distribution import show_plot
 from r3_keyword_search import retrieve_keyword_specific_listing
 from r4_cleanliness_analysis import retrieve_reviews_listing
+from r5_room_usage_analysis import retrieve_room_usage_listings
 
 
 class IntroFrameScreen(IntroFrame):
@@ -297,34 +300,35 @@ class ReviewFrameScreen(ReviewFrame):
 class RoomUsageFrameScreen(RoomUsageFrame):
     def __init__(self):
         super().__init__(None)
+        self.room_usage_listing = None
 
         self.Show()
 
-    # def UpdateGrid(self):
-    #     print(self.keyword_specific_listing)
-    #     # Check if there are rows in the grid
-    #     if self.keyword_specific_listing.empty:
-    #         print("No data to display.")
-    #         return
-    #     num_rows, num_cols = self.keyword_specific_listing.shape
-    #
-    #     # Set the grid size based on the number of rows and columns in the data
-    #     self.OutputTable.ClearGrid()
-    #     self.OutputTable.DeleteRows(0, self.OutputTable.GetNumberRows())
-    #     self.OutputTable.DeleteCols(0, self.OutputTable.GetNumberCols())
-    #     self.OutputTable.AppendRows(num_rows)
-    #     self.OutputTable.AppendCols(num_cols)
-    #
-    #     # Set column labels
-    #     column_labels = ['Listing Id', 'Name', 'Summary', 'Space', 'Description', 'Notes', 'House Rules', 'Amenities']
-    #     for col_idx, label in enumerate(column_labels):
-    #         self.OutputTable.SetColLabelValue(col_idx, label)
-    #
-    #     # Update cell values with data
-    #     for row_idx in range(num_rows):
-    #         for col_idx in range(num_cols):
-    #             value = str(self.keyword_specific_listing.iloc[row_idx, col_idx])
-    #             self.OutputTable.SetCellValue(row_idx, col_idx, value)
+    def UpdateGrid(self):
+        print(self.room_usage_listing)
+        # Check if there are rows in the grid
+        if self.room_usage_listing.empty:
+            print("No data to display.")
+            return
+        num_rows, num_cols = self.room_usage_listing.shape
+
+        # Set the grid size based on the number of rows and columns in the data
+        self.RoomUsageTable.ClearGrid()
+        self.RoomUsageTable.DeleteRows(0, self.RoomUsageTable.GetNumberRows())
+        self.RoomUsageTable.DeleteCols(0, self.RoomUsageTable.GetNumberCols())
+        self.RoomUsageTable.AppendRows(num_rows)
+        self.RoomUsageTable.AppendCols(num_cols)
+
+        # Set column labels
+        column_labels = ['Listing Id', 'Usage Count']
+        for col_idx, label in enumerate(column_labels):
+            self.RoomUsageTable.SetColLabelValue(col_idx, label)
+
+        # Update cell values with data
+        for row_idx in range(num_rows):
+            for col_idx in range(num_cols):
+                value = str(self.room_usage_listing.iloc[row_idx, col_idx])
+                self.RoomUsageTable.SetCellValue(row_idx, col_idx, value)
 
     def ListingbuttonOnButtonClick(self, event):
         listing_frame = ListingFrameScreen(suburb=None, from_date=None, to_date=None, listing_result=None)
@@ -366,22 +370,22 @@ class RoomUsageFrameScreen(RoomUsageFrame):
         formatted_to_date = to_date.Format("%Y-%m-%d")
         return formatted_to_date
 
-    def FromdateOnDateChanged(self, event):
+    def FromDateOnDateChanged(self, event):
         from_date = self.GetFromDate(event)
         return from_date
 
-    def TodateOnDateChanged(self, event):
+    def ToDateOnDateChanged(self, event):
         to_date = self.GetToDate(event)
         return to_date
 
-    # def SearchbuttonOnButtonClick(self, event):
-    #     self.TriggerSearchButtonClick()
-    #
-    # def TriggerSearchButtonClick(self):
-    #     from_date = self.GetFromDate()
-    #     to_date = self.GetToDate()
-    #     self.keyword_specific_listing = retrieve_keyword_specific_listing(from_date, to_date)
-    #     self.UpdateGrid()
+    def SearchButtonOnButtonClick(self, event):
+        self.TriggerSearchButtonClick()
+
+    def TriggerSearchButtonClick(self):
+        from_date = self.GetFromDate()
+        to_date = self.GetToDate()
+        self.room_usage_listing = retrieve_room_usage_listings(from_date, to_date)
+        self.UpdateGrid()
 
 
 class UserSpecificFrameScreen(UserSpecificFrame):
@@ -488,8 +492,19 @@ class UserSpecificFrameScreen(UserSpecificFrame):
 class PriceFrameScreen(PriceFrame):
     def __init__(self):
         super().__init__(None)
+        self.plot_data = None
 
         self.Show()
+
+    def UpdatePlot(self):
+        print(self.plot_data)
+        h, w = self.CanvasPanel.GetSize()
+        self.plot_data.set_size_inches(h / self.plot_data.get_dpi(), w / self.plot_data.get_dpi())
+
+        canvas = FigureCanvasWxAgg(self.CanvasPanel, -1, self.plot_data)
+        canvas.SetSize(self.CanvasPanel.GetSize())
+
+        self.Layout()
 
     def ListingbuttonOnButtonClick(self, event):
         listing_frame = ListingFrameScreen(suburb=None, from_date=None, to_date=None, listing_result=None)
@@ -521,36 +536,32 @@ class PriceFrameScreen(PriceFrame):
         user_specific_frame.Show()
         self.Hide()
 
-    def KeywordtextboxOnText(self, event):
-        current_evt = event.GetEventObject()
-        label = current_evt.GetLabel()
-        keyword_text = self.Keywordtextbox.GetValue()
-        print("Keyword text: ", keyword_text)
-        return keyword_text
-
-    def SuburblistOnChoice(self, event):
-        # current_evt = event.GetEventObject()
-        # label = current_evt.GetLabel()
-        suburb = self.Suburblist.GetStringSelection()
-        print("Keyword text: ", suburb)
-        return suburb
-
-    def FromdateOnDateChanged(self, event):
-        # current_evt = event.GetEventObject()
-        from_date = self.Fromdate.GetValue()
+    def GetFromDate(self, event=None):
+        from_date = self.FROMdate.GetValue()
         formatted_from_date = from_date.Format("%Y-%m-%d")
-        print("From Date: ", formatted_from_date)
         return formatted_from_date
 
-    def TodateOnDateChanged(self, event):
-        # current_evt = event.GetEventObject()
-        to_date = self.Todate.GetValue()
+    def GetToDate(self, event=None):
+        to_date = self.ToDate1.GetValue()
         formatted_to_date = to_date.Format("%Y-%m-%d")
-        print("To Date: ", formatted_to_date)
         return formatted_to_date
 
-    def SearchbuttonOnButtonClick(self, event):
-        event.Skip()
+    def FromDateOnDateChanged(self, event):
+        from_date = self.GetFromDate(event)
+        return from_date
+
+    def ToDateOnDateChanged(self, event):
+        to_date = self.GetToDate(event)
+        return to_date
+
+    def CreateChartButtonOnButtonClick(self, event):
+        self.TriggerSearchButtonClick()
+
+    def TriggerSearchButtonClick(self):
+        from_date = self.GetFromDate()
+        to_date = self.GetToDate()
+        self.plot_data = show_plot(from_date, to_date)
+        self.UpdatePlot()
 
 
 if __name__ == "__main__":
